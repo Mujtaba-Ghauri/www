@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<head>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+    <title>Jumbotron Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="padding-top: 70px">
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <button id="changePage" class="btn btn-sm btn-default navbar-btn navbar-right">
+            Settings
+        </button>
+        <span class="navbar-brand">Currency Converter</span>
+    </div>
+</div>
+
+<div id="mainPage" style="display:block" class="container">
+    <form id="convert">
+        <div class="form-group">
+            <label for="entry">Amount</label>
+            <input type="number" class="form-control" placeholder="10" id="entry" name="entry">
+        </div>
+        <div class="form-group">
+            <label class="radio-inline">
+                <input type="radio" name="convertTo" value="euros" checked> &pound; to &euro;
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="convertTo" value="pounds"> &euro; to &pound;
+            </label>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-lg" value="Convert">
+        </div>
+    </form>
+    <p class="label label-success" id="converted-entry"></p>
+</div>
+
+<div id="settingsPage" style="display:none" class="container">
+    <form id="saveXrate">
+        <div class="form-group">
+            <label for="exchange-rate">Exchange rate</label>
+            <div class="input-group">
+                <span class="input-group-addon">&pound;1 =</span>
+                <input type="number" class="form-control" placeholder="Enter Xrate" name="xrate" id="exchange-rate">
+                <span class="input-group-addon">&euro;</span>
+            </div>
+            <div>
+                <input type="submit" class="btn btn-default" value="Save">
+            </div>
+        </div>
+    </form>
+    <div>
+        <button class="btn btn-default" id="showDatabase">Show Database</button>
+    </div>
+
+    <div id="contentsPanel" class="panel panel-success" style="display:none">
+        <div class="panel-heading">
+            <h2 class="panel-title">Database contents</h2>
+        </div>
+        <div id="databaseItems" class="panel-body">
+        </div>
+    </div>
+
+    <div>
+        <table id="databaseTable" class="table table-striped" style="display:none">
+            <thead>
+            <tr>
+                <th>Currency</th>
+                <th>Exchange rate</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+ ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+</body>
+</html>
