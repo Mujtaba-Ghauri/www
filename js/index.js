@@ -33,7 +33,8 @@ var app = {
         // The scope of 'this' is the event. In order to call the 'receivedEvent'
         // function, we must explicitly call 'app.receivedEvent(...);'
         onDeviceReady: function () {
-            document.getElementById("convert").addEventListener('submit', app.convert, false);
+            //document.getElementById("convert").addEventListener('submit', app.convert, false);
+            document.getElementById("convert").addEventListener('submit', app.convertFromToCurrency, false);
             document.getElementById("changePage").addEventListener('click', app.changePage, false);
             document.getElementById("saveXrate").addEventListener('submit', app.saveXrate, false);
             document.getElementById("showDatabase").addEventListener('click', app.onShowDatabaseClick, false);
@@ -58,11 +59,11 @@ var app = {
             if (Xrate != null) {
                 if (convertTo == 'euros') {
                     var result = entry * Xrate;
-                    document.getElementById("converted-entry").textContent = '£' + entry + ' is €' + result.toFixed(2);
+                    document.getElementById("entry-from").textContent = '£' + entry + ' is €' + result.toFixed(2);
 
                 } else {
                     var result = entry / Xrate;
-                    document.getElementById("converted-entry").textContent = '€' + entry + ' is £' + result.toFixed(2);
+                    document.getElementById("entry-to").textContent = '€' + entry + ' is £' + result.toFixed(2);
                 }
 
             } else {
@@ -151,7 +152,63 @@ var app = {
                 var cell1 = row.insertCell(1);
                 cell1.textContent = results.rows.item(i).Xrate;
             }
-        }
+        },
+
+        convertFromToCurrency : function(e){
+            e.preventDefault();
+
+            var entry = this.entry.value;
+            var convertFrom = this.convertFrom.value;
+            var convertTo = this.convertTo.value;
+
+            var fromExchangeRateValue;
+            var toExchangeRateValue;
+
+            if(convertFrom == 'euros'){
+                fromExchangeRateValue = 1.20
+                alert(convertFrom);
+            }
+            else if(convertFrom == 'pounds'){
+                fromExchangeRateValue = 1.23
+            }
+            else if(convertFrom == 'yen'){
+                fromExchangeRateValue = 123.50
+            }
+            else if(convertFrom == 'rupees'){
+                fromExchangeRateValue = 176.89
+            }
+
+            if(convertTo == 'euros'){
+                toExchangeRateValue = 1.20
+            }
+            else if(convertTo == 'pounds'){
+                toExchangeRateValue = 1.23
+            }
+            else if(convertTo == 'yen'){
+                toExchangeRateValue = 123.50
+            }
+            else if(convertTo == 'rupees'){
+                toExchangeRateValue = 176.89
+            }
+
+            var primaryCurrency;
+            if(fromExchangeRateValue != null && toExchangeRateValue !=null){
+                if(convertFrom !=null){
+                    primaryCurrency = entry * fromExchangeRateValue;
+                }
+                if(toExchangeRateValue !=null){
+                    var result = primaryCurrency * toExchangeRateValue;
+                    document.getElementById('converted-entry').textContent = convertFrom.toString() + ''
+                        + primaryCurrency + 'is' + convertTo.toString() + '' + result.toFixed(2);
+                }
+            }
+
+
+        },
+
+
+
+
 
     }
     ;
